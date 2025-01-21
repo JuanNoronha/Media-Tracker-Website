@@ -1,0 +1,13 @@
+<div>
+    <label>Summary</label>
+    <br>
+    <textarea name="summary" class='input-summary'><%= staff.summary %></textarea>
+    <br>
+</div>
+<br><br>
+<div>
+    <label>Birthdate</label>
+    <input type="date" name="birthdate"
+            value = <%= staff.birthdate == null ? '' :
+            staff.birthdate.toISOString().split('T')[0]  %>
+</div>

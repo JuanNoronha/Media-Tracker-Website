@@ -1,0 +1,45 @@
+:root { 
+  --color-btn-border: black;
+}
+
+.btn {
+  border: 0px;
+  border-radius:1px;
+  padding: .5rem 1rem;
+  font-size: 1rem;
+  font-family: 'Poppins';
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  filter:brightness(1.8);
+  margin-inline:10px;
+}
+
+.btn-row {
+  display: flex;
+  align-items: flex-start;
+}
+
+.btn-row > * {
+  margin-left: 1rem;
+}
+
+.btn-row > *:first-child {
+  margin-left: 0;
+}
+
+.btn-primary {
+  background-color:var(--color-btn-primary) ;
+}
+
+.btn-primary:hover {
+  filter:brightness(1.4)
+}
+
+.btn-danger {
+  background-color: var(--color-btn-danger);
+}
+
+.btn-danger:hover {
+  filter:brightness(0.6)
+}

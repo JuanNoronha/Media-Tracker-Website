@@ -1,0 +1,50 @@
+<form  action='/shows/<%=show.id%>/track/submit'>
+    <div style='margin:10px;'>
+        <label>Watch status</label>
+        <br>
+        <%console.log(user.shows)%>
+        <select class="js-example-basic-single" style="width:300px" name="watchStatus">
+            <%if ( user.shows.watchStatus == 'Watching') {%><option selected value="Watching">Watching</option>
+            <%} else {%><option value="Watching">Watching</option> <%}%>
+
+            <%if ( user.shows.watchStatus == 'Watched') {%><option selected value="Watched">Watched</option>
+            <%} else {%><option value="Watched">Watched</option> <%}%>
+
+            <%if ( user.shows.watchStatus == 'Plan to watch') {%><option selected value="Plan to watch">Plan To Watch</option><%%>
+            <%} else {%><option value="Plan to watch">Plan to watch</option> <%}%>
+
+            <%if ( user.shows.watchStatus == 'Dropped') {%><option selected value="Dropped">Dropped</option>
+            <%} else {%><option value="Dropped">Dropped</option> <%}%>
+        </select>
+    </div>
+
+    <div style='margin:10px;'>
+        <label>Episodes watched</label>
+            <br>
+                <input type="number" value="<%=user.shows.count%>" name="userCount" min="0"> / <%=show.length%>
+    </div>
+
+    <div style='margin:10px;'>
+        <label>Watch Date</label><br>
+        <input type="date" name="watchDate" value ="<%= user.shows.date == null ? '' : user.shows.date.toISOString().split('T')[0]%>">
+    </div>
+
+    <div style='margin:10px;'>
+        <label>Number of rewatches</label><br>
+        <input type="number" name="rewatches" value='<%=user.shows.rewatches%>' min="0">
+    </div>
+
+    <div style='margin:10px;'>
+        <label>Rating</label>
+            <br>
+                <input type="number" value="<%=show.ratings.rating%>" name="userRating" min="1" max="100">
+            <br>
+        <div style='margin-top:10px;'><label>Leave a review (optional)</label>
+        <br>
+            <textarea name="userReview" class='input-summary'><%=show.ratings.review%></textarea>
+        </div>
+    <button type="submit" style='margin-left:25px;margin-top:0px' class="btn btn-primary">Submit</button>
+</div>
+</form>
+
+    <br><br>

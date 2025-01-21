@@ -1,0 +1,92 @@
+
+            <!-- using a risky move here to render wallpaper in the bg with gradient, perhaps change later -->
+            <div  style="
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(32, 32, 32) 100%),
+            url('<%=book.wallpaperImagePath||`/images/missing_wallpaper.png`%>');margin:0px;position:absolute;width:100%;">
+
+<div class='media-header'>
+    <div id="header-left">
+        <img src="<%= book.coverImagePath || "/images/missing_movie.png"%>">
+    </div>
+    <div id="header-right">
+        <h2><%=book.name%></h2>
+        <p><%=book.summary%></p>
+    </div>
+</div>
+        
+<a href="/books/<%=book.id%>/track" class="btn btn-primary btn-track">Track</a>
+
+<div class='media-body'>
+
+<div class="media-body-children media-body-left">
+
+    <%if (book.avgRating!=null) {%>
+        <h3>Rating</h3>
+        <%=book.avgRating%>
+    <%}%>
+
+    <%if (book.length!=null) {%>
+        <h3>Length</h3>
+        <%=book.length%>
+    <%}%>
+    
+    <% if(book.tags.length!=0){%>
+    <div>
+        <h3>Tags</h3>
+        <ul>
+        <% for (i=0;i<book.tags.length;i++) { %>
+            <li><%=book.tags[i].name%></li><br>
+        <%}%>
+        </ul>
+    </div>
+    <%}%>
+
+    <div>
+        <% if(book.releaseDate!=null){%><h3>Release Date</h3><%=book.releaseDate.toDateString()%><%}%>
+    </div>
+</div>
+
+<div class=" media-body-children media-body-right">
+    <%if(typeof user != 'undefined'){%>
+    <%if ( user.books.watchStatus) {%>
+        <h3>Your stats</h3>
+        <div>
+            <%if (user.books.watchStatus) {%>
+            <p>Status: <%=user.books.watchStatus%></p>
+            <%}%>
+            <%if (user.books.count) {%>
+                <p>Status: <%=user.books.count%><%if(book.length){%>/<%=book.length%></p><%}%>
+                <%}%>
+            <%if (user.books.date) {%>
+            <p>Watch date: <%=user.books.date%></p>
+            <%}%>
+            <%if (user.books.rewatches) {%>
+            <p>Number of rereads: <%=user.books.rewatches%></p>
+            <%}%>
+        </div>
+    <%}%>
+    <%}%>
+
+    <h3>Staff</h3>
+        <%if ( staff!="" || staff!= null ) {%>
+        <div> <!--list staff-->
+            <ul>
+            <% for (let i = 0; i < staff.length; i++){ %>
+                <li><a href="/staff/<%=staff[i]._id%>"><%=staff[i].name%></a> - <%=staff[i].works.role[0].name%></li><br>
+            <%}%>
+            </ul>
+            </div>
+        <%}%>
+    <p><u><a href="/books/<%=book.id%>/addstaff">Add new staff member for this book</a></u></p>
+</div>
+
+</div>
+
+<div style="margin-left:75%;margin-bottom:30px">
+<a class="btn btn-primary" href="/books/<%=book.id%>/edit">Edit</a>
+<%- include ('../partials/deleteForm', {url : `/books/${book.id}`}) %>
+</div>
+</form>
+
+</div>
+</div>

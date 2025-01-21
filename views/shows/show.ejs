@@ -1,0 +1,93 @@
+
+            <!-- using a risky move here to render wallpaper in the bg with gradient, perhaps change later -->
+            <div  style="
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(32, 32, 32) 100%),
+            url('<%=show.wallpaperImagePath||`/images/missing_wallpaper.png`%>');margin:0px;position:absolute;width:100%;">
+
+<div class='media-header'>
+    <div id="header-left">
+        <img src="<%= show.coverImagePath || "/images/missing_movie.png" %>">
+    </div>
+    <div id="header-right">
+        <h2><%=show.name%></h2>
+        <p><%=show.summary%></p>
+    </div>
+</div>
+        
+<a href="/shows/<%=show.id%>/track" class="btn btn-primary btn-track">Track</a>
+
+<div class='media-body'>
+
+<div class="media-body-children media-body-left">
+
+    <%if (show.avgRating!=null) {%>
+        <h3>Rating</h3>
+        <%=show.avgRating%>
+    <%}%>
+
+    <%if (show.length!=null) {%>
+        <h3>Length</h3>
+        <%=show.length%>
+    <%}%>
+    
+    <% if(show.tags.length!=0){%>
+    <div>
+        <h3>Tags</h3>
+        <ul>
+        <% for (i=0;i<show.tags.length;i++) { %>
+            <li><%=show.tags[i].name%></li><br>
+        <%}%>
+        </ul>
+    </div>
+    <%}%>
+
+    <div>
+        <% if(show.releaseDate!=null){%><h3>Release Date</h3><%=show.releaseDate.toDateString()%><%}%>
+    </div>
+</div>
+
+<div class=" media-body-children media-body-right">
+    <%if(typeof user != 'undefined'){%>
+        <%console.log(user)%>
+    <%if ( user.shows.watchStatus) {%>
+        <h3>Your stats</h3>
+        <div>
+            <%if (user.shows.watchStatus) {%>
+            <p>Status: <%=user.shows.watchStatus%></p>
+            <%}%>
+            <%if (user.shows.count) {%>
+                <p>Status: <%=user.shows.count%><%if(show.length){%>/<%=show.length%></p><%}%>
+                <%}%>
+            <%if (user.shows.date) {%>
+            <p>Watch date: <%=user.shows.date%></p>
+            <%}%>
+            <%if (user.shows.rewatches) {%>
+            <p>Number of rewatches: <%=user.shows.rewatches%></p>
+            <%}%>
+        </div>
+    <%}%>
+    <%}%>
+
+    <%if ( staff!="" || staff!= null ) {%>
+    <h3>Staff</h3>
+        <div> <!--list staff-->
+            <ul>
+            <% for (let i = 0; i < staff.length; i++){ %>
+                <li><a href="/staff/<%=staff[i]._id%>"><%=staff[i].name%></a> - <%=staff[i].works.role[0].name%></li><br>
+            <%}%>
+            </ul>
+            </div>
+        <%}%>
+    <p><u><a href="/shows/<%=show.id%>/addstaff">Add new staff member for this show</a></u></p>
+</div>
+
+</div>
+
+<div style="margin-left:75%;margin-bottom:30px">
+<a class="btn btn-primary" href="/shows/<%=show.id%>/edit">Edit</a>
+<%- include ('../partials/deleteForm', {url : `/shows/${show.id}`}) %>
+</div>
+</form>
+
+</div>
+</div>

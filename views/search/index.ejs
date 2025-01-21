@@ -1,0 +1,39 @@
+<div style="margin:20px;">
+<% if (movies.length != 0) {%>
+    <div>
+        <h3>Movies</h3>
+        <ul>
+        <% movies.forEach ( movie => { %>
+            <div class='media-box'><a href="/movies/<%=movie.id%>"><img src="<%= movie.coverImagePath || "images/missing_movie.png"%>"><div class="media-box-title"><%=movie.name%></div></a></div>
+        <% }) %>
+        </ul>
+    </div>
+<% } %>
+
+<% if (shows.length != 0) {%>
+    <div>
+        <h3>Shows</h3>
+        <ul>
+        <% shows.forEach ( show => { %>
+            <div class='media-box'><a href="/shows/<%=show.id%>"><img src="<%= show.coverImagePath || "images/missing_movie.png"%>"><div class="media-box-title"><%=show.name%></div></a></div>
+        <% }) %>
+        </ul>
+    </div>
+<% } %>
+
+<% if (books.length != 0) {%>
+    <div>
+        <h3>Books</h3>
+        <ul>
+        <% books.forEach ( book => { %>
+            <div class='media-box'><a href="/books/<%=book.id%>"><img src="<%= book.coverImagePath || "images/missing_movie.png"%>"><div class="media-box-title"><%=book.name%></div></a></div>
+        <% }) %>
+        </ul>
+    </div>
+<% } %>
+
+<% if (books.length == 0 & shows.length == 0 & movies.length == 0) {%>
+    
+    No results found.
+<%}%>
+</div>

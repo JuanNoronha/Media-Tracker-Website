@@ -1,0 +1,28 @@
+<section>
+    <div class="topmedia">
+    <div>
+        <h2>Top rated movies</h2>
+            <%movies.forEach ( movies => {%>
+                <div class='media-box'><a href="/movies/<%=movies.id%>"><img src="<%= movies.coverImagePath || "images/missing_movie.png"%>"></a></div>
+            <%})%>
+            <div class='media-box-more'><a href="/movies">See more</a></div>
+        
+    </div>
+    <div>
+        <h2>Top rated Shows</h2>
+            <%shows.forEach ( shows => {%>
+                <div class='media-box'><a href="/shows/<%=shows.id%>"><img src="<%= shows.coverImagePath || "images/missing_movie.png"%>"></a></div>
+            <%})%>
+            <div class='media-box-more'><a href="/shows">See more</a></div>
+    </div>
+    <div>
+        <h2>Top rated books</h2>
+        <ul>
+            <%books.forEach ( books => {%>
+                <div class='media-box'><a href="/books/<%=books.id%>"><img src="<%= books.coverImagePath || "images/missing_movie.png"%>"></a></div>
+            <%})%>
+            <div class='media-box-more '><a href="/books">See more</a></div>
+        </ul>
+    </div>
+    </div>
+</section>

@@ -1,0 +1,42 @@
+<script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+<script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
+<script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+
+<script>
+    //cover
+        // Register the plugin with FilePond
+        FilePond.registerPlugin(
+            FilePondPluginImagePreview, 
+            FilePondPluginFileEncode, 
+            FilePondPluginImageResize
+        );
+   
+        // Get a reference to the file input element
+        const coverUpload = document.querySelector('input[id="coverUp"]');
+
+        // Create the FilePond instance
+        const pondcoverUpload = FilePond.create(coverUpload, {
+            stylePanelAspectRatio:'2:3'
+        });
+
+    //wallpaper
+
+        // Get a reference to the file input element
+        const wallUpload = document.querySelector('input[id="wallpaperUp"]');
+
+        // Create the FilePond instance
+        const pondWallUpload = FilePond.create(wallUpload, {
+            stylePanelAspectRatio:'16:9'
+        });
+
+    //square
+        // Get a reference to the file input element
+        const iconUpload = document.querySelector('input[id="squareUp"]');
+
+        // Create the FilePond instance
+        const pondIconUpload = FilePond.create(iconUpload, {
+            stylePanelAspectRatio:'1:1'
+        });
+    FilePond.parse(document.body);
+</script>

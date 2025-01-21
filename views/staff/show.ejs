@@ -1,0 +1,45 @@
+
+<section class='home'>
+    <div class='media-header'>
+        <div id="header-left">
+            <img src="<%= staff.coverImagePath || "/images/missing_movie.png"%>">
+        </div>
+        <div>
+            <h2><%=staff.name%></h2>
+            <p><%=staff.summary%></p>
+        </div id="header-right">
+    </div>
+    
+    <div class='media-body'>
+        <div class="media-body-children media-body-left">
+            <%if (staff.birthdate) {%>
+                <%console.log("why you run this")%>
+                Birthdate: <%=staff.birthdate.toDateString()%>
+            <%}%>
+        </div>
+        
+        <div class=" media-body-children media-body-right">
+            <h3>Works</h3>
+            <%if ( staff.works!="" || staff.works != null ) {%>
+            <div> <!--list books-->
+                <ul>
+                <% staff.works.forEach ( works => { %>
+                    </ul>
+                    <br>
+                    <li>
+                        <a href="/movies/<%=works.movie.id%>"><%= works.movie.name %></a> - 
+                        <%= works.role.name %><br>
+                    </li>
+                <% }) %>
+
+                </ul>
+            </div>
+            <%}%>
+        </div>
+    </div>
+        
+    </div>
+    <a href="/staff/<%=staff.id%>/edit">Edit</a>
+    <%- include ('../partials/deleteForm', {url : `/staff/${staff.id}`}) %>
+    </form>
+    </section>
