@@ -1,3 +1,1 @@
-A website that has a community managed database for books, movies and tv series with personal account based media consumption log functionality
-
-
+A community-driven platform designed to catalog and track personal media consumption across books, movies, and TV series. Users can contribute to a shared database, enriching it with detailed information, and maintain personalized logs of their viewing/reading history. 
